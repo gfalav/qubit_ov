@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "659311306236",
+    "project_id": "qubit-ov",
+    "storage_bucket": "qubit-ov.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:659311306236:android:8942e223e24a076b6abe79",
+        "android_client_info": {
+          "package_name": "com.example.qubit_ov"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgdhkE3HrwC0jjqibNS3SVMYDptmCKyH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

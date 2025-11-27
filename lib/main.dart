@@ -89,6 +89,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            Image.asset(
+              'lib/assets/images/Qubit-POS.png',
+              width: 200,
+              height: 200,
+            ),
           ],
         ),
       ),
