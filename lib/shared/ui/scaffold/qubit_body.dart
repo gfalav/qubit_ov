@@ -56,7 +56,7 @@ class QubitBody extends StatelessWidget {
                       appController.devType.value != 'Mobile' && showRightPanel,
                   child: Container(
                     width: appController.screenWidth * rightWidth / 100,
-                    color: Theme.of(context).colorScheme.tertiaryContainer,
+                    color: Theme.of(context).colorScheme.secondaryContainer,
                     child: rightPanel,
                   ),
                 ),
