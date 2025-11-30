@@ -15,7 +15,7 @@ class SignIn extends StatelessWidget {
       bottomPanel: Center(child: Text("BottomPanel")),
       appBarTitle: "Sign In",
       appBarIcon: Icons.login.codePoint,
-      showAppBarActions: true,
+      showAppBarActions: false,
       leftWidth: 0,
       rightWidth: 40,
       mainWidth: 60,

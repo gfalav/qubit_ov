@@ -10,7 +10,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final AuthController authController = Get.put(AuthController());
     void onPressed() {
-      authController.uid.value = '';
+      authController.signOut();
       // Log out action
     }
 

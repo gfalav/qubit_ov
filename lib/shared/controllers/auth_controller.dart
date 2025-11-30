@@ -25,6 +25,7 @@ class AuthController extends GetxController {
         uid.value = user.uid;
       } else {
         uid.value = '';
+        Get.to(SignIn());
         Get.snackbar(
           'EmailNotVerified',
           'Please verify your email before signing in.',
@@ -85,23 +86,17 @@ class AuthController extends GetxController {
     await _auth.signOut();
   }
 
-  Future<void> sendPasswordResetEmail() async {
-    try {
-      await _auth.sendPasswordResetEmail(email: emailController.text);
-    } on FirebaseAuthException catch (e) {
-      Get.snackbar(
-        'Password Reset Error',
-        e.message!,
-        duration: const Duration(seconds: 5),
-        backgroundColor: Theme.of(Get.context!).colorScheme.errorContainer,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-    }
-  }
-
   Future<void> updatePassword() async {
     try {
       await _auth.currentUser!.updatePassword(passwordController.text);
+      Get.to(Home());
+      Get.snackbar(
+        'Update Password',
+        'Your password has been updated successfully.',
+        duration: const Duration(seconds: 5),
+        backgroundColor: Theme.of(Get.context!).colorScheme.secondaryContainer,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
         'Update Password Error',
@@ -113,16 +108,17 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> resetPassword() async {
+  Future<void> sendPasswordResetEmail() async {
     try {
       await _auth.sendPasswordResetEmail(email: emailController.text);
       Get.snackbar(
         'Password Reset',
         'A password reset email has been sent to ${emailController.text}.',
         duration: const Duration(seconds: 5),
-        backgroundColor: Theme.of(Get.context!).colorScheme.primaryContainer,
+        backgroundColor: Theme.of(Get.context!).colorScheme.secondaryContainer,
         snackPosition: SnackPosition.BOTTOM,
       );
+      Get.to(SignIn());
     } on FirebaseAuthException catch (e) {
       Get.snackbar(
         'Password Reset Error',

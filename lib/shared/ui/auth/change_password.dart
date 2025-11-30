@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:qubit_ov/shared/ui/auth/forms/sign_up_form.dart';
+import 'package:qubit_ov/shared/ui/auth/forms/change_password_form.dart';
 import 'package:qubit_ov/shared/ui/pixabay/pixabay.dart';
 import 'package:qubit_ov/shared/ui/scaffold/qubit_scaffold.dart';
 
-class SignUp extends StatelessWidget {
-  const SignUp({super.key});
+class ChangePassword extends StatelessWidget {
+  const ChangePassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,16 +13,16 @@ class SignUp extends StatelessWidget {
       rightPanel: Pixabay(),
       drawerPanel: Center(child: Text("DrawerPanel")),
       bottomPanel: Center(child: Text("BottomPanel")),
-      appBarTitle: "Sign Up",
-      appBarIcon: Icons.person_add.codePoint,
-      showAppBarActions: false,
-      leftWidth: 00,
+      appBarTitle: "Change Password",
+      appBarIcon: Icons.lock_reset.codePoint,
+      showAppBarActions: true,
+      leftWidth: 0,
       rightWidth: 40,
       mainWidth: 60,
       showLeftPanel: false,
       showRightPanel: true,
       showBottomPanel: false,
-      mainPanel: SignUpForm(),
+      mainPanel: ChangePasswordForm(),
     );
   }
 }

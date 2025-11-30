@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
 import 'package:qubit_ov/shared/controllers/auth_controller.dart';
+import 'package:qubit_ov/shared/ui/auth/reset_password.dart';
 import 'package:qubit_ov/shared/ui/auth/sign_up.dart';
 import 'package:qubit_ov/shared/ui/logos/enterprise_logo.dart';
 
@@ -16,7 +17,7 @@ class SignInForm extends StatelessWidget {
 
     void sendSignIn() {
       if (formKey.currentState?.validate() ?? false) {
-        authController.uid.value = 'gustavo';
+        authController.signIn();
       }
     }
 
@@ -77,14 +78,18 @@ class SignInForm extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 16, bottom: 10),
                 child: ElevatedButton(
                   onPressed: sendSignIn,
                   child: const Text('Sign In'),
                 ),
               ),
+              TextButton(
+                onPressed: () => Get.to(ResetPassword()),
+                child: Text("Olvidé mi contraseña"),
+              ),
               Padding(
-                padding: EdgeInsets.only(top: 45, bottom: 16),
+                padding: EdgeInsets.only(top: 35, bottom: 16),
                 child: Text("No tienes una cuenta? Regístrate aquí."),
               ),
               Row(

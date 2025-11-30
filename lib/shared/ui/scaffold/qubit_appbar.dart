@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qubit_ov/shared/ui/auth/user_actions.dart';
 
 class QubitAppbar {
   PreferredSizeWidget appBar(
@@ -41,6 +42,13 @@ class QubitAppbar {
                 // Handle notification icon press
               },
             ),
+          ),
+        ),
+        Visibility(
+          visible: showActions,
+          child: Padding(
+            padding: EdgeInsets.only(right: 10),
+            child: UserActions(),
           ),
         ),
       ],
