@@ -19,6 +19,7 @@ class QubitScaffold extends StatelessWidget {
   final double mainWidth;
   final bool showLeftPanel;
   final bool showRightPanel;
+  final bool showBottomPanel;
   const QubitScaffold({
     super.key,
     required this.leftPanel,
@@ -34,6 +35,7 @@ class QubitScaffold extends StatelessWidget {
     required this.mainWidth,
     required this.showLeftPanel,
     required this.showRightPanel,
+    required this.showBottomPanel,
   });
 
   @override
@@ -61,6 +63,7 @@ class QubitScaffold extends StatelessWidget {
         mainWidth: mainWidth,
         showLeftPanel: showLeftPanel,
         showRightPanel: showRightPanel,
+        showBottomPanel: showBottomPanel,
       ),
       drawer: appController.devType.value == 'Mobile' ? QubitDrawer() : null,
     );

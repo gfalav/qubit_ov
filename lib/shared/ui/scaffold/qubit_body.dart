@@ -12,6 +12,7 @@ class QubitBody extends StatelessWidget {
   final double mainWidth;
   final bool showLeftPanel;
   final bool showRightPanel;
+  final bool showBottomPanel;
   const QubitBody({
     super.key,
     required this.leftPanel,
@@ -23,6 +24,7 @@ class QubitBody extends StatelessWidget {
     required this.mainWidth,
     required this.showLeftPanel,
     required this.showRightPanel,
+    required this.showBottomPanel,
   });
 
   @override
@@ -44,12 +46,17 @@ class QubitBody extends StatelessWidget {
                     child: leftPanel,
                   ),
                 ),
-                Container(
-                  width: appController.devType.value != 'Mobile'
-                      ? appController.screenWidth.value * mainWidth / 100
-                      : appController.screenWidth.value,
-                  color: Theme.of(context).colorScheme.secondaryContainer,
-                  child: mainPanel,
+                SingleChildScrollView(
+                  child: Container(
+                    constraints: BoxConstraints(
+                      minHeight: appController.screenHeight.value - 56,
+                    ),
+                    width: appController.devType.value != 'Mobile'
+                        ? appController.screenWidth.value * mainWidth / 100
+                        : appController.screenWidth.value,
+                    color: Theme.of(context).colorScheme.secondaryContainer,
+                    child: mainPanel,
+                  ),
                 ),
                 Visibility(
                   visible:
@@ -63,10 +70,13 @@ class QubitBody extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            color: Theme.of(context).colorScheme.surfaceContainer,
-            height: 48,
-            child: bottomPanel,
+          Visibility(
+            visible: showBottomPanel,
+            child: Container(
+              color: Theme.of(context).colorScheme.surfaceContainer,
+              height: 48,
+              child: bottomPanel,
+            ),
           ),
         ],
       ),

@@ -10,8 +10,10 @@ class AuthController extends GetxController {
   final uid = ''.obs;
 
   final emailController = TextEditingController(text: 'gfalav@yahoo.com');
-  final passwordController = TextEditingController(text: 'pppppppp');
-  final repasswordController = TextEditingController(text: 'pppppppp');
+  final passwordController = TextEditingController(text: 'Pppp1#');
+  final repasswordController = TextEditingController(text: 'Pppp1#');
+  final passwordObscure = true.obs;
+  final repasswordObscure = true.obs;
 
   @override
   void onInit() {
@@ -32,7 +34,7 @@ class AuthController extends GetxController {
         );
       }
     });
-    ever(uid, (callback)=> isLoggedIn());
+    ever(uid, (callback) => isLoggedIn());
   }
 
   void isLoggedIn() {
@@ -109,9 +111,9 @@ class AuthController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
-  } 
+  }
 
-Future<void> resetPassword() async {
+  Future<void> resetPassword() async {
     try {
       await _auth.sendPasswordResetEmail(email: emailController.text);
       Get.snackbar(
@@ -130,5 +132,13 @@ Future<void> resetPassword() async {
         snackPosition: SnackPosition.BOTTOM,
       );
     }
+  }
+
+  void setPasswordObscure() {
+    passwordObscure.value = !passwordObscure.value;
+  }
+
+  void setRepasswordObscure() {
+    repasswordObscure.value = !repasswordObscure.value;
   }
 }

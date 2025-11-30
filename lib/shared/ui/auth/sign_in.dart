@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qubit_ov/shared/ui/auth/forms/sign_in_form.dart';
 import 'package:qubit_ov/shared/ui/pixabay/pixabay.dart';
 import 'package:qubit_ov/shared/ui/scaffold/qubit_scaffold.dart';
 
@@ -10,7 +11,6 @@ class SignIn extends StatelessWidget {
     return QubitScaffold(
       leftPanel: Center(child: Text("LeftPanel")),
       rightPanel: Pixabay(),
-      mainPanel: Center(child: Text("MainPanel")),
       drawerPanel: Center(child: Text("DrawerPanel")),
       bottomPanel: Center(child: Text("BottomPanel")),
       appBarTitle: "Sign In",
@@ -21,6 +21,8 @@ class SignIn extends StatelessWidget {
       mainWidth: 60,
       showLeftPanel: false,
       showRightPanel: true,
+      showBottomPanel: false,
+      mainPanel: SignInForm(),
     );
   }
 }
