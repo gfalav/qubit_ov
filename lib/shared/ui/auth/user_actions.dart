@@ -38,7 +38,7 @@ class UserActions extends StatelessWidget {
         PopupMenuItem(
           child: ListTile(
             leading: const Icon(Icons.logout),
-            title: const Text("SignOut"),
+            title: const Text("Cierra Sesión"),
             onTap: () {
               authController.signOut();
             },

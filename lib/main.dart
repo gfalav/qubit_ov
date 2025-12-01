@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
     TextTheme textTheme = createTextTheme(
       context,
-      "Roboto Condensed",
+      "Open Sans Condensed",
       "Roboto",
     );
 

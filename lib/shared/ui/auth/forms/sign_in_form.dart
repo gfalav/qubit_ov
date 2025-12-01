@@ -81,7 +81,7 @@ class SignInForm extends StatelessWidget {
                 padding: EdgeInsets.only(top: 16, bottom: 10),
                 child: ElevatedButton(
                   onPressed: sendSignIn,
-                  child: const Text('Sign In'),
+                  child: const Text('Ingresar'),
                 ),
               ),
               TextButton(

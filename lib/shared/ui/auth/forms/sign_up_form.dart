@@ -79,7 +79,7 @@ class SignUpForm extends StatelessWidget {
                 child: TextFormField(
                   controller: authController.repasswordController,
                   decoration: InputDecoration(
-                    labelText: 'Confirm Password',
+                    labelText: 'Confirma Password',
                     suffix: IconButton(
                       onPressed: () => authController.setRepasswordObscure(),
                       icon: Icon(Icons.lock, size: 20),
@@ -90,7 +90,7 @@ class SignUpForm extends StatelessWidget {
                     FormBuilderValidators.required(),
                     (val) {
                       if (val != authController.passwordController.text) {
-                        return 'Passwords do not match';
+                        return 'Passwords no coinciden';
                       }
                       return null;
                     },
@@ -99,9 +99,24 @@ class SignUpForm extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 16),
-                child: ElevatedButton(
-                  onPressed: sendSignUp,
-                  child: const Text('Sign Up'),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: 8, left: 8),
+                      child: ElevatedButton(
+                        onPressed: sendSignUp,
+                        child: const Text('Regístrate'),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(right: 8, left: 8),
+                      child: ElevatedButton(
+                        onPressed: Get.back,
+                        child: const Text('Cancela'),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],

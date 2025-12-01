@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qubit_ov/shared/controllers/auth_controller.dart';
+import 'package:qubit_ov/shared/ui/menu/menu.dart';
 import 'package:qubit_ov/shared/ui/scaffold/qubit_scaffold.dart';
 
 class Home extends StatelessWidget {
@@ -15,7 +16,7 @@ class Home extends StatelessWidget {
     }
 
     return QubitScaffold(
-      leftPanel: Center(child: Text("LeftPanel")),
+      leftPanel: Menu(),
       rightPanel: Center(child: Text("RightPanel")),
       mainPanel: Center(
         child: ElevatedButton(onPressed: onPressed, child: Text("LogOut")),
@@ -25,9 +26,9 @@ class Home extends StatelessWidget {
       appBarTitle: "Home",
       appBarIcon: Icons.home.codePoint,
       showAppBarActions: true,
-      leftWidth: 30,
-      rightWidth: 30,
-      mainWidth: 40,
+      leftWidth: 25,
+      rightWidth: 15,
+      mainWidth: 60,
       showLeftPanel: true,
       showRightPanel: true,
       showBottomPanel: true,

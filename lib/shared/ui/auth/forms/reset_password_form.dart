@@ -30,7 +30,7 @@ class ResetPasswordForm extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(top: 20, bottom: 16),
               child: Text(
-                "Reset Your Password",
+                "Recupera Password",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
@@ -47,9 +47,24 @@ class ResetPasswordForm extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(top: 16),
-              child: ElevatedButton(
-                onPressed: sendResetPassword,
-                child: const Text('Send Reset Email'),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(right: 8, left: 8),
+                    child: ElevatedButton(
+                      onPressed: sendResetPassword,
+                      child: const Text('Envía Email'),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 8, left: 8),
+                    child: ElevatedButton(
+                      onPressed: Get.back,
+                      child: const Text('Cancela'),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
