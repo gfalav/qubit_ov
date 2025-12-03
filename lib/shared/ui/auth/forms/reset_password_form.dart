@@ -52,16 +52,18 @@ class ResetPasswordForm extends StatelessWidget {
                 children: [
                   Padding(
                     padding: EdgeInsets.only(right: 8, left: 8),
-                    child: ElevatedButton(
+                    child: ElevatedButton.icon(
                       onPressed: sendResetPassword,
-                      child: const Text('Envía Email'),
+                      label: const Text('Envía Email'),
+                      icon: Icon(Icons.lock_reset),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(right: 8, left: 8),
-                    child: ElevatedButton(
+                    child: ElevatedButton.icon(
                       onPressed: Get.back,
-                      child: const Text('Cancela'),
+                      label: const Text('Cancela'),
+                      icon: Icon(Icons.cancel),
                     ),
                   ),
                 ],

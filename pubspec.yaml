@@ -43,6 +43,7 @@ dependencies:
   dio: ^5.9.0
   form_builder_validators: ^11.2.0
   font_awesome_flutter: ^10.12.0
+  image_picker: ^1.2.1
   
 
 dev_dependencies:

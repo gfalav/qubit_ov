@@ -4,6 +4,7 @@ import 'package:qubit_ov/shared/controllers/auth_controller.dart';
 import 'package:qubit_ov/shared/ui/auth/change_password.dart';
 import 'package:qubit_ov/shared/ui/auth/user_avatar.dart';
 import 'package:qubit_ov/shared/ui/home/home.dart';
+import 'package:qubit_ov/shared/ui/userdata/userdata.dart';
 
 class UserActions extends StatelessWidget {
   const UserActions({super.key});
@@ -20,7 +21,7 @@ class UserActions extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text("Perfil de Usuario"),
             onTap: () async {
-              await Get.toNamed("/updateuser");
+              await Get.to(Userdata());
               Get.offAll(Home());
             },
           ),

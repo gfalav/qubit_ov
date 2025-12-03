@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import 'package:qubit_ov/shared/controllers/auth_controller.dart';
+import 'package:qubit_ov/shared/controllers/userdata_controller.dart';
 import 'package:qubit_ov/shared/ui/logos/enterprise_logo.dart';
 
-class SignUpForm extends StatelessWidget {
-  const SignUpForm({super.key});
+class UserdataForm extends StatelessWidget {
+  const UserdataForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AuthController authController = Get.put(AuthController());
+    final UserdataController userdataController = Get.put(UserdataController());
     final formKey = GlobalKey<FormState>();
 
-    void sendSignUp() {
+    void sendUserdataSave() {
       if (formKey.currentState?.validate() ?? false) {
-        authController.signUp();
+        userdataController.userdataSave();
       }
     }
 
@@ -31,70 +31,68 @@ class SignUpForm extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 20, bottom: 16),
                 child: Text(
-                  "Bienvenido a Edesal App",
+                  "Actualizar Información del Usuario",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: authController.emailController,
-                  decoration: const InputDecoration(labelText: 'Email'),
+                  controller: userdataController.nameController,
+                  decoration: const InputDecoration(labelText: 'Nombres'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    FormBuilderValidators.email(),
+                    FormBuilderValidators.firstName(),
                   ]),
                 ),
               ),
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: authController.passwordController,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    suffix: IconButton(
-                      onPressed: () => authController.setPasswordObscure(),
-                      icon: Icon(Icons.lock, size: 20),
-                    ),
-                  ),
-                  obscureText: authController.passwordObscure.value,
+                  controller: userdataController.lastNameController,
+                  decoration: const InputDecoration(labelText: 'Apellidos'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    FormBuilderValidators.password(
-                      minLength: 6,
-                      maxLength: 32,
-                      minLowercaseCount: 1,
-                      minUppercaseCount: 1,
-                      minNumberCount: 1,
-                      minSpecialCharCount: 1,
-                      checkNullOrEmpty: true,
-                      errorText:
-                          "Debe contener 6 caracteres, al menos una letra mayúscula, una minúscula, un número y un carácter especial.",
-                    ),
+                    FormBuilderValidators.lastName(),
                   ]),
                 ),
               ),
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: authController.repasswordController,
-                  decoration: InputDecoration(
-                    labelText: 'Confirma Password',
-                    suffix: IconButton(
-                      onPressed: () => authController.setRepasswordObscure(),
-                      icon: Icon(Icons.lock, size: 20),
-                    ),
-                  ),
-                  obscureText: authController.repasswordObscure.value,
+                  controller: userdataController.phoneNumberController,
+                  decoration: const InputDecoration(labelText: 'Teléfono'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
-                    (val) {
-                      if (val != authController.passwordController.text) {
-                        return 'Passwords no coinciden';
-                      }
-                      return null;
-                    },
+                    FormBuilderValidators.phoneNumber(),
                   ]),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16, bottom: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      child: ElevatedButton.icon(
+                        onPressed: userdataController.pickImage,
+                        label: const Text('Selecciona Imagen'),
+                        icon: Icon(Icons.photo),
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(left: 8, right: 8),
+                      child: userdataController.selectedImagen.value != null
+                          ? Image.memory(
+                              userdataController.selectedImagen.value!,
+                              width: 150,
+                              height: 150,
+                            )
+                          : SizedBox.shrink(),
+                    ),
+                  ],
                 ),
               ),
               Padding(
@@ -105,9 +103,9 @@ class SignUpForm extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(right: 8, left: 8),
                       child: ElevatedButton.icon(
-                        onPressed: sendSignUp,
-                        label: const Text('Regístrate'),
-                        icon: Icon(Icons.person_add),
+                        onPressed: sendUserdataSave,
+                        label: const Text('Actualiza'),
+                        icon: Icon(Icons.person),
                       ),
                     ),
                     Padding(
