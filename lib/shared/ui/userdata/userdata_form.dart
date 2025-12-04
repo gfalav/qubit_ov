@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:get/get.dart';
-import 'package:qubit_ov/shared/controllers/userdata_controller.dart';
+import 'package:qubit_ov/shared/controllers/auth_controller.dart';
 import 'package:qubit_ov/shared/ui/logos/enterprise_logo.dart';
 
 class UserdataForm extends StatelessWidget {
@@ -9,12 +9,12 @@ class UserdataForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final UserdataController userdataController = Get.put(UserdataController());
+    final AuthController authController = Get.put(AuthController());
     final formKey = GlobalKey<FormState>();
 
     void sendUserdataSave() {
       if (formKey.currentState?.validate() ?? false) {
-        userdataController.userdataSave();
+        authController.userDataSave();
       }
     }
 
@@ -38,7 +38,7 @@ class UserdataForm extends StatelessWidget {
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: userdataController.nameController,
+                  controller: authController.nameController,
                   decoration: const InputDecoration(labelText: 'Nombres'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -49,7 +49,7 @@ class UserdataForm extends StatelessWidget {
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: userdataController.lastNameController,
+                  controller: authController.lastNameController,
                   decoration: const InputDecoration(labelText: 'Apellidos'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -60,7 +60,7 @@ class UserdataForm extends StatelessWidget {
               Container(
                 constraints: BoxConstraints(maxWidth: 400),
                 child: TextFormField(
-                  controller: userdataController.phoneNumberController,
+                  controller: authController.phoneNumberController,
                   decoration: const InputDecoration(labelText: 'Teléfono'),
                   validator: FormBuilderValidators.compose([
                     FormBuilderValidators.required(),
@@ -77,18 +77,19 @@ class UserdataForm extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(left: 8, right: 8),
                       child: ElevatedButton.icon(
-                        onPressed: userdataController.pickImage,
+                        onPressed: authController.pickImage,
                         label: const Text('Selecciona Imagen'),
                         icon: Icon(Icons.photo),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(left: 8, right: 8),
-                      child: userdataController.selectedImagen.value != null
-                          ? Image.memory(
-                              userdataController.selectedImagen.value!,
-                              width: 150,
-                              height: 150,
+                      child: authController.selectedImagen.value != null
+                          ? CircleAvatar(
+                              radius: 40,
+                              backgroundImage: MemoryImage(
+                                authController.selectedImagen.value!,
+                              ),
                             )
                           : SizedBox.shrink(),
                     ),

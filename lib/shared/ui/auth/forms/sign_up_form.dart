@@ -97,6 +97,7 @@ class SignUpForm extends StatelessWidget {
                   ]),
                 ),
               ),
+
               Padding(
                 padding: EdgeInsets.only(top: 16),
                 child: Row(
